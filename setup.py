@@ -7,7 +7,8 @@ setup(
     packages=find_packages(where="src"),
     package_dir={"": "src"},
     install_requires=[
-        "jupyterlab>=3.0.0,<4.0.0",
+        "jupyterlab>=4.0.0",
+        "jupyter_server>=2.0.0",
         "openai>=1.0.0",
         "anthropic>=0.5.0",
         "google-generativeai>=0.3.0",
@@ -23,6 +24,17 @@ setup(
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
+        "Framework :: Jupyter",
+        "Framework :: Jupyter :: JupyterLab",
+        "Framework :: Jupyter :: JupyterLab :: 4",
+        "Framework :: Jupyter :: Extensions",
+        "Framework :: Jupyter :: Extensions :: Server",
     ],
-    python_requires=">=3.7",
+    python_requires=">=3.9",
+    # Register the server extension
+    entry_points={
+        "jupyter_server.extensions": [
+            "jupyterlab_ai_assistant = jupyterlab_ai_assistant:_jupyter_server_extension_points"
+        ]
+    },
 )
