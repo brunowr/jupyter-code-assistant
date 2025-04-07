@@ -1,0 +1,29 @@
+Metadata-Version: 2.4
+Name: jupyterlab-ai-assistant
+Version: 0.1.0
+Summary: JupyterLab extension providing an AI code assistant with multiple LLM support
+Home-page: https://github.com/username/jupyterlab_ai_assistant
+Author: AI Assistant Developer
+Author-email: Replit <info@replit.com>
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+Requires-Dist: flask
+Requires-Dist: anthropic
+Requires-Dist: openai
+Requires-Dist: google-generativeai
+Requires-Dist: requests
+Requires-Dist: aiohttp
+Requires-Dist: jupyterlab>=4.0.0
+Requires-Dist: gunicorn>=23.0.0
+Requires-Dist: setuptools>=78.1.0
+Provides-Extra: dev
+Requires-Dist: black; extra == "dev"
+Requires-Dist: pytest; extra == "dev"
+Requires-Dist: pytest-cov; extra == "dev"
+Dynamic: author
+Dynamic: home-page
+Dynamic: requires-python
+
+# JupyterLab AI Assistant
+
+A JupyterLab extension providing an AI code assistant with multiple LLM support, contextual awareness, and code manipulation capabilities.

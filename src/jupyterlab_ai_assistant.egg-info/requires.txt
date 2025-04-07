@@ -1,0 +1,14 @@
+flask
+anthropic
+openai
+google-generativeai
+requests
+aiohttp
+jupyterlab>=4.0.0
+gunicorn>=23.0.0
+setuptools>=78.1.0
+
+[dev]
+black
+pytest
+pytest-cov

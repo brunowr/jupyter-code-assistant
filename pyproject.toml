@@ -1,0 +1,31 @@
+[project]
+name = "jupyterlab-ai-assistant"
+version = "0.1.0"
+description = "JupyterLab extension providing an AI code assistant with multiple LLM support"
+readme = "README.md"
+authors = [
+    {name = "Replit", email = "info@replit.com"}
+]
+requires-python = ">=3.9"
+dependencies = [
+    "flask",
+    "anthropic",
+    "openai",
+    "google-generativeai",
+    "requests",
+    "aiohttp",
+    "jupyterlab>=4.0.0",
+    "gunicorn>=23.0.0",
+    "setuptools>=78.1.0",
+]
+
+[build-system]
+requires = ["setuptools>=42.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project.optional-dependencies]
+dev = [
+    "black",
+    "pytest",
+    "pytest-cov"
+]
