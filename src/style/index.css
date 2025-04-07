@@ -1,0 +1,203 @@
+.jp-AIAssistant {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--jp-layout-color1);
+  color: var(--jp-content-font-color1);
+  font-size: var(--jp-ui-font-size1);
+  height: 100%;
+}
+
+.jp-AIAssistant-header {
+  padding: 8px;
+  border-bottom: var(--jp-border-width) solid var(--jp-border-color2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.jp-AIAssistant-title {
+  font-weight: 600;
+  font-size: var(--jp-ui-font-size1);
+}
+
+.jp-AIAssistant-modelSelector {
+  margin-left: 8px;
+  flex-grow: 1;
+  max-width: 150px;
+}
+
+.jp-AIAssistant-chat {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 8px;
+}
+
+.jp-AIAssistant-message {
+  margin-bottom: 16px;
+  border-radius: 4px;
+  padding: 8px;
+  max-width: 100%;
+}
+
+.jp-AIAssistant-userMessage {
+  background-color: var(--jp-layout-color2);
+  margin-left: 20px;
+}
+
+.jp-AIAssistant-assistantMessage {
+  background-color: var(--jp-layout-color3);
+  margin-right: 20px;
+}
+
+.jp-AIAssistant-errorMessage {
+  background-color: rgba(255, 0, 0, 0.1);
+  border-left: 3px solid red;
+}
+
+.jp-AIAssistant-footer {
+  border-top: var(--jp-border-width) solid var(--jp-border-color2);
+  padding: 8px;
+}
+
+.jp-AIAssistant-input {
+  display: flex;
+}
+
+.jp-AIAssistant-textarea {
+  flex-grow: 1;
+  resize: none;
+  border: var(--jp-border-width) solid var(--jp-border-color2);
+  border-radius: 4px;
+  padding: 8px;
+  outline: none;
+  font-family: var(--jp-code-font-family);
+  font-size: var(--jp-code-font-size);
+  min-height: 60px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.jp-AIAssistant-textarea:focus {
+  border-color: var(--jp-brand-color1);
+}
+
+.jp-AIAssistant-sendButton {
+  margin-left: 8px;
+  align-self: flex-end;
+}
+
+.jp-AIAssistant-code {
+  background-color: var(--jp-cell-editor-background);
+  border-radius: 4px;
+  padding: 8px;
+  margin: 8px 0;
+  font-family: var(--jp-code-font-family);
+  font-size: var(--jp-code-font-size);
+  white-space: pre-wrap;
+  overflow-x: auto;
+}
+
+.jp-AIAssistant-codeActions {
+  display: flex;
+  margin-top: 4px;
+  gap: 4px;
+}
+
+.jp-AIAssistant-codeAction {
+  background-color: var(--jp-brand-color1);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: var(--jp-ui-font-size0);
+  cursor: pointer;
+}
+
+.jp-AIAssistant-codeAction:hover {
+  background-color: var(--jp-brand-color0);
+}
+
+.jp-AIAssistant-settingsButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--jp-content-font-color2);
+}
+
+.jp-AIAssistant-settingsButton:hover {
+  color: var(--jp-content-font-color1);
+}
+
+.jp-AIAssistant-markdown p {
+  margin-bottom: 8px;
+}
+
+.jp-AIAssistant-markdown pre {
+  background-color: var(--jp-cell-editor-background);
+  border-radius: 4px;
+  padding: 8px;
+  margin: 8px 0;
+  overflow-x: auto;
+}
+
+.jp-AIAssistant-markdown code {
+  font-family: var(--jp-code-font-family);
+  font-size: var(--jp-code-font-size);
+  background-color: var(--jp-cell-editor-background);
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+.jp-AIAssistant-errorFixButton {
+  margin-right: 8px;
+}
+
+.jp-AIAssistant-commands {
+  margin-bottom: 8px;
+}
+
+.jp-AIAssistant-commandButton {
+  margin-right: 8px;
+  margin-bottom: 4px;
+}
+
+/* Settings panel styles */
+.jp-AIAssistant-settings {
+  padding: 16px;
+}
+
+.jp-AIAssistant-settings h3 {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.jp-AIAssistant-settingsGroup {
+  margin-bottom: 16px;
+}
+
+.jp-AIAssistant-settingsGroup h4 {
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.jp-AIAssistant-settingsRow {
+  display: flex;
+  margin-bottom: 8px;
+  align-items: center;
+}
+
+.jp-AIAssistant-settingsLabel {
+  flex-basis: 120px;
+  font-weight: 500;
+}
+
+.jp-AIAssistant-settingsValue {
+  flex-grow: 1;
+}
+
+.jp-AIAssistant-apiKeyInput {
+  width: 100%;
+  padding: 4px 8px;
+  border: var(--jp-border-width) solid var(--jp-border-color2);
+  border-radius: 4px;
+}

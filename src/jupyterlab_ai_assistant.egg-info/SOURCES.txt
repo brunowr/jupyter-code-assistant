@@ -1,0 +1,17 @@
+README.md
+pyproject.toml
+setup.py
+src/jupyterlab_ai_assistant/__init__.py
+src/jupyterlab_ai_assistant/_version.py
+src/jupyterlab_ai_assistant/handlers.py
+src/jupyterlab_ai_assistant.egg-info/PKG-INFO
+src/jupyterlab_ai_assistant.egg-info/SOURCES.txt
+src/jupyterlab_ai_assistant.egg-info/dependency_links.txt
+src/jupyterlab_ai_assistant.egg-info/requires.txt
+src/jupyterlab_ai_assistant.egg-info/top_level.txt
+src/jupyterlab_ai_assistant/llm/__init__.py
+src/jupyterlab_ai_assistant/llm/anthropic.py
+src/jupyterlab_ai_assistant/llm/base.py
+src/jupyterlab_ai_assistant/llm/gemini.py
+src/jupyterlab_ai_assistant/llm/ollama.py
+src/jupyterlab_ai_assistant/llm/openai.py
