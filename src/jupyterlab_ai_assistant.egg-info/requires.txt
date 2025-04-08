@@ -5,6 +5,7 @@ google-generativeai
 requests
 aiohttp
 jupyterlab>=4.0.0
+jupyter_server>=2.0.0
 gunicorn>=23.0.0
 setuptools>=78.1.0
 

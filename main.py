@@ -94,6 +94,18 @@ def llm_request():
         # Generate response
         result = llm.generate_response(prompt, messages, notebook_content)
         
+        # Check if there was an error with the primary LLM and fallback to OpenAI if needed
+        if llm_type != "openai" and result.get("error", False):
+            logger.info(f"Primary LLM {llm_type} failed, falling back to OpenAI")
+            fallback_llm = get_llm_instance("openai")
+            fallback_result = fallback_llm.generate_response(prompt, messages, notebook_content)
+            
+            # If the fallback was successful, use it but add a note about the fallback
+            if not fallback_result.get("error", False):
+                fallback_content = fallback_result.get("content", "")
+                fallback_result["content"] = f"[Note: Using OpenAI as fallback due to issues with {llm_type}]\n\n{fallback_content}"
+                return jsonify(fallback_result)
+        
         return jsonify(result)
     except Exception as e:
         logger.error(f"Error handling LLM request: {e}")
@@ -116,6 +128,16 @@ def fix_error():
         
         # Fix errors
         fixed_code = llm.fix_errors(code, errors)
+        
+        # Check if there was an error message returned (error messages start with # Error:)
+        if llm_type != "openai" and fixed_code.startswith("# Error:"):
+            logger.info(f"Primary LLM {llm_type} error fixing failed, falling back to OpenAI")
+            fallback_llm = get_llm_instance("openai")
+            fallback_fixed_code = fallback_llm.fix_errors(code, errors)
+            
+            # If the fallback was successful, use it but add a note about the fallback
+            if not fallback_fixed_code.startswith("# Error:"):
+                return jsonify({"fixed_code": f"# Note: Using OpenAI as fallback due to issues with {llm_type}\n{fallback_fixed_code}"})
         
         return jsonify({"fixed_code": fixed_code})
     except Exception as e:

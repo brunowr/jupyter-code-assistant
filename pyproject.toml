@@ -51,3 +51,15 @@ jupyterlab_ai_assistant = "jupyterlab_ai_assistant:_jupyter_server_extension_poi
 py-modules = []
 packages = ["jupyterlab_ai_assistant"]
 package-dir = {"" = "src"}
+
+[tool.jupyter-releaser.options]
+version_cmd = "python -m jupyterlab_ai_assistant._version"
+
+[tool.jupyter-releaser.hooks]
+before-build-npm = ["npm install -g yarn", "yarn", "yarn build"]
+before-build-python = ["pip install -e .", "jupyter labextension build"]
+
+[jupyterlab.extension]
+app-dir = "app_dir"
+builder = "@jupyterlab/builder"
+outputDir = "src/jupyterlab_ai_assistant/labextension"

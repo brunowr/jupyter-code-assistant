@@ -1,0 +1,2 @@
+[jupyter_server.extensions]
+jupyterlab_ai_assistant = jupyterlab_ai_assistant:_jupyter_server_extension_points

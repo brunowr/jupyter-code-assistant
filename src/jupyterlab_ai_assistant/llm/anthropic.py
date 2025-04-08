@@ -1,9 +1,11 @@
 import os
 import json
+import logging
 from typing import Dict, List, Any, Optional
 import anthropic
-from anthropic import Anthropic
 from .base import BaseLLM
+
+logger = logging.getLogger(__name__)
 
 
 class AnthropicLLM(BaseLLM):
@@ -16,14 +18,36 @@ class AnthropicLLM(BaseLLM):
         # the newest Anthropic model is "claude-3-5-sonnet-20241022" which was released October 22, 2024
         # do not change this unless explicitly requested by the user
         self.model = "claude-3-5-sonnet-20241022"
+        self.api_key_error = None
+        
         api_key = os.environ.get("ANTHROPIC_API_KEY")
         if not api_key:
             self.client = None
+            self.api_key_error = "Anthropic API key is not set. Please provide a valid API key in the settings."
         else:
             try:
-                self.client = Anthropic(api_key=api_key)
-            except Exception as e:
+                # Initialize the Anthropic client with the API key
+                self.client = anthropic.Anthropic(api_key=api_key)
+                
+                # We'll validate the API key by making a small test request
+                try:
+                    # Make a minimal request to test authentication
+                    # Use a try-except block as we're just testing if the API key works
+                    self.client.messages.create(
+                        model=self.model,
+                        max_tokens=10,
+                        messages=[{"role": "user", "content": "Hello"}],
+                    )
+                except Exception as validation_error:
+                    if "401" in str(validation_error) or "unauthorized" in str(validation_error).lower():
+                        self.client = None
+                        self.api_key_error = "Invalid Anthropic API key. Please check your API key and try again."
+                    else:
+                        # Other errors might be temporary or not related to authentication
+                        self.api_key_error = f"API connection error: {str(validation_error)}"
+            except Exception as init_error:
                 self.client = None
+                self.api_key_error = f"Failed to initialize Anthropic client: {str(init_error)}"
     
     def generate_response(self, prompt: str, messages: List[Dict[str, Any]], 
                          notebook_content: Dict[str, Any]) -> Dict[str, Any]:
@@ -40,8 +64,9 @@ class AnthropicLLM(BaseLLM):
         """
         # Check if client is None (API key not set or invalid)
         if self.client is None:
+            error_message = self.api_key_error or "Error: Anthropic API key is not set or is invalid. Please provide a valid API key in the settings."
             return {
-                "content": "Error: Anthropic API key is not set or is invalid. Please provide a valid API key in the settings.",
+                "content": error_message,
                 "has_code": False,
                 "model": self.model,
                 "provider": "Anthropic",
@@ -120,7 +145,8 @@ class AnthropicLLM(BaseLLM):
         """
         # Check if client is None (API key not set or invalid)
         if self.client is None:
-            return f"# Error: Anthropic API key is not set or is invalid. Please provide a valid API key in the settings.\n{code}"
+            error_message = self.api_key_error or "Anthropic API key is not set or is invalid. Please provide a valid API key in the settings."
+            return f"# Error: {error_message}\n{code}"
             
         error_text = "\n".join([f"Error {i+1}: {error.get('message', '')}" 
                                for i, error in enumerate(errors)])

@@ -1,0 +1,73 @@
+{
+  "jupyter.lab.setting-icon": "ui-components:chat",
+  "jupyter.lab.setting-icon-label": "AI Assistant",
+  "title": "JupyterLab AI Assistant",
+  "description": "Settings for JupyterLab AI Assistant extension",
+  "properties": {
+    "defaultProvider": {
+      "type": "string",
+      "title": "Default LLM Provider",
+      "description": "The default LLM provider to use",
+      "default": "openai"
+    },
+    "apiKeys": {
+      "type": "object",
+      "title": "API Keys",
+      "description": "API keys for various LLM providers",
+      "properties": {
+        "openai": {
+          "type": "string",
+          "title": "OpenAI API Key",
+          "default": ""
+        },
+        "anthropic": {
+          "type": "string",
+          "title": "Anthropic API Key",
+          "default": ""
+        },
+        "google": {
+          "type": "string",
+          "title": "Google API Key",
+          "default": ""
+        }
+      },
+      "additionalProperties": false
+    },
+    "selectedModels": {
+      "type": "object",
+      "title": "Selected Models",
+      "description": "The selected model for each provider",
+      "properties": {
+        "openai": {
+          "type": "string",
+          "title": "OpenAI Model",
+          "default": "gpt-4o"
+        },
+        "anthropic": {
+          "type": "string",
+          "title": "Anthropic Model",
+          "default": "claude-3-5-sonnet-20241022"
+        },
+        "gemini": {
+          "type": "string",
+          "title": "Google Model",
+          "default": "gemini-pro"
+        },
+        "ollama": {
+          "type": "string",
+          "title": "Ollama Model",
+          "default": "llama3"
+        }
+      },
+      "additionalProperties": false
+    },
+    "maxHistoryLength": {
+      "type": "integer",
+      "title": "Max History Length",
+      "description": "Maximum number of messages to keep in history",
+      "default": 10
+    }
+  },
+  "additionalProperties": false,
+  "type": "object"
+}
