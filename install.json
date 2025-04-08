@@ -1,0 +1,5 @@
+{
+  "packageManager": "pip",
+  "packageName": "jupyterlab_ai_assistant",
+  "uninstallInstructions": "Use your Python package manager (pip, conda, etc.) to uninstall jupyterlab_ai_assistant"
+}

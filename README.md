@@ -20,12 +20,36 @@ A JupyterLab extension providing an AI code assistant with multiple LLM support,
 
 ### Getting Started
 
-1. Clone this repository
-2. Follow the standard development setup procedure
-3. Enable the server extension using Jupyter commands
-4. Launch JupyterLab
+#### Installation from PyPI (Recommended)
 
-For complete, specific instructions on the exact commands to run, please see the detailed documentation.
+```bash
+pip install jupyterlab-ai-assistant
+```
+
+Then restart JupyterLab to enable the extension.
+
+#### Manual Installation
+
+1. Clone this repository
+   ```bash
+   git clone https://github.com/yourusername/jupyterlab-ai-assistant.git
+   cd jupyterlab-ai-assistant
+   ```
+
+2. Install the package
+   ```bash
+   pip install -e .
+   ```
+
+3. Enable the server extension
+   ```bash
+   jupyter server extension enable jupyterlab_ai_assistant
+   ```
+
+4. Launch JupyterLab
+   ```bash
+   jupyter lab
+   ```
 
 ## Configuration
 
